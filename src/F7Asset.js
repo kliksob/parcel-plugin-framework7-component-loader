@@ -235,8 +235,15 @@ module.exports = class F7Asset extends JSAsset {
     });
   
     if (templateType === 't7' && code.indexOf('Template7Helpers') >= 0) {
+      let t7dep;
+      if(config.t7InWIndow) {
+        t7dep = `const Template7 = (function(win){return win.Template7})(window);`;
+      } else {
+        t7dep = `import Template7 from 'template7';`;
+      }
       code = `
-        import Template7 from 'template7';
+        ${t7dep}
+
         const Template7Helpers = Template7.helpers;
     
         ${partials.join('\n')}
@@ -244,9 +251,6 @@ module.exports = class F7Asset extends JSAsset {
         ${code}
       `;
     }
-    //return `${code}`;
-    //console.log(code);
-    //console.log(style)
     this.contents = `${code}`;
   }
 }
