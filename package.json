@@ -1,0 +1,23 @@
+{
+  "name": "parcel-plugin-framework7-component-loader",
+  "version": "1.0.0",
+  "description": "Parcel Plugin",
+  "main": "index.js",
+  "repository": "https://github.com/kliksob/parcel-plugin-framework7-component-loader",
+  "author": "Kliksob",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "concurrently yarn:watch yarn:serve-httpd",
+    "watch": "node ./scripts/watch.js",
+    "serve-httpd": "busybox httpd -f -p 0.0.0.0:1234 -h scripts/dist"
+  },
+  "dependencies": {
+    "acorn": "^6.1.1",
+    "escodegen": "^1.9.1",
+    "template7": "^1.4.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}

@@ -1,0 +1,33 @@
+<template>
+  <div class="page">
+    <h3 class="text-hello">Hello Worldse {{counter}}</h3>
+    <button @click="up(1)">Up</button>
+    <button @click="up(-1)">Down</button>
+  </div>
+</template>
+<template-partial id="bar">
+    <div>bar</div>
+</template-partial>
+<style scoped>
+  .text-hello {
+    color: blue
+  }
+</style>
+
+<script>
+  export default {
+    methods: {
+      up(p) {
+        //console.log(this)
+        this.$setState({
+          counter: this.counter+p
+        })
+      }
+    },
+    data() {
+      return {
+        counter: 1
+      }
+    }
+  }
+</script>
